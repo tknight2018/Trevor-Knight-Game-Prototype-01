@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour {
 	public List<GameObject> XObjects = new List<GameObject> ();
 
 	public GameObject DeskTwo;
-	public GameObject GameOverScreen;
+    public GameObject redrum;
+    public GameObject GameOverScreen;
 
 	public int CurrentAnim = 0;
 	public int XCount = 0;
@@ -74,22 +75,40 @@ public class GameController : MonoBehaviour {
 		TriggerAnimation(AnimList[0]);//Mona Lisa
 	
 		StartCoroutine (WaitForClick (1.0f));//How long they should have to react
-		yield return new WaitForSeconds (4.0f); // WAIT TIME FOR RECEPTIONIST
 
-		TriggerAnimation(AnimList[1]);//Receptionist
+        yield return new WaitForSeconds(3.0f);
+
+
+        TriggerAnimation(AnimList[4]);//lizard walk
+
+        StartCoroutine(WaitForClick(15.0f));//How long they should have to react
+        yield return new WaitForSeconds(20.0f); // WAIT TIME FOR RECEPTIONIST
+
+        TriggerAnimation(AnimList[1]);//Receptionist
 
 		StartCoroutine (WaitForClick (1.0f));//How long they should have to react
 		yield return new WaitForSeconds (7.0f);// WAIT TIME FOR Clipboard
 
 		TriggerAnimation(AnimList[2]);//Dude in fetal position
-
-		StartCoroutine (WaitForClick (1.0f));//How long they should have to react
+      
+        
+        StartCoroutine (WaitForClick (1.0f));//How long they should have to react
 		yield return new WaitForSeconds (7.0f);// WAIT For next event
 
 		//Do next event
 		DeskTwo.SetActive (false);
 
 		StartCoroutine (WaitForClick (1.0f));//How long they should have to react
-		yield return new WaitForSeconds (7.0f);// Wait For Next Event
-	}
+		yield return new WaitForSeconds (2.0f);// Wait For Next Event
+
+        redrum.SetActive (true);
+
+        StartCoroutine(WaitForClick(1.0f));//How long they should have to react
+        yield return new WaitForSeconds(10.0f);// Wait For Next Event
+
+        TriggerAnimation(AnimList[3]); //fatMonaLisa
+
+        StartCoroutine(WaitForClick(1.5f));//How long they should have to react
+        yield return new WaitForSeconds(2.0f);// Wait For Next Event
+    }
 }
